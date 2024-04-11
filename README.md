@@ -24,9 +24,9 @@
 menggunakan react redux sebagai state management
 
 # Fitur
-**Login & Logout**
-**Home menu**
-**Checout**
+1. **Login & Logout**
+2. **Home menu**
+3. **Checout**
 
 # Screenshoot
 ![image](https://github.com/Albertt1509/store/assets/94915933/eb925365-1c6b-47ba-b6c4-4aa91a72d227)
