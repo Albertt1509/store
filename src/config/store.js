@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { thunk } from 'redux-thunk'; // Mengimpor thunk dari 'redux-thunk'
+import { thunk } from 'redux-thunk';
 import productReducer from './reducers/reducers';
 import cartReducer from './reducers/reducersCart';
+import authReducer from './reducers/reducersLogin';
 
 const rootReducer = combineReducers({
     products: productReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    auth: authReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk)); // Menggunakan thunk tanpa destrukturisasi
+const store = createStore(rootReducer, applyMiddleware(thunk));
 export default store;
