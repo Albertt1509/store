@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react';
-import circleImage from '../img/icon.jpg';
+import circleImage from '../img/sakura.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../config/actions/actionLogin';
 import { Navigate } from 'react-router-dom';

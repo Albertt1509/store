@@ -1,26 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-    increaseQuantity,
-    decreaseQuantity,
-    toggleCheckbox,
-    removeFromCart,
-    getTotalCheckedItems,
-    getTotalPriceCheckedItems,
-} from '../config/actions/actionsCart';
+import { increaseQuantity, decreaseQuantity, toggleCheckbox, removeFromCart, getTotalCheckedItems, getTotalPriceCheckedItems } from '../config/actions/actionsCart';
 import { FaTrash, FaPlus, FaMinus } from 'react-icons/fa';
+import CheckoutModal from './CheckoutModal';
 
 const CartComponent = ({
-    cartItems,
-    removeFromCart,
-    increaseQuantity,
-    decreaseQuantity,
-    toggleCheckbox,
-    totalCheckedItems,
-    totalCheckedPrice,
-    getTotalCheckedItems,
-    getTotalPriceCheckedItems,
+    cartItems, removeFromCart, increaseQuantity, decreaseQuantity, toggleCheckbox, totalCheckedItems, totalCheckedPrice, getTotalCheckedItems, getTotalPriceCheckedItems,
 }) => {
+    const [showModal, setShowModal] = useState(false);
+
     useEffect(() => {
         getTotalCheckedItems();
         getTotalPriceCheckedItems();
@@ -33,6 +21,7 @@ const CartComponent = ({
     const handleDeleteItem = (productId) => {
         removeFromCart(productId);
     };
+
     const handleDecreaseQuantity = (itemId) => {
         decreaseQuantity(itemId);
     };
@@ -41,6 +30,10 @@ const CartComponent = ({
         toggleCheckbox(itemId);
         getTotalCheckedItems();
         getTotalPriceCheckedItems();
+    };
+
+    const handleCheckout = () => {
+        setShowModal(true);
     };
 
     return (
@@ -73,7 +66,7 @@ const CartComponent = ({
                                                 >
                                                     <FaMinus />
                                                 </button>
-                                                <h1 className="px-3 border py-1">{item.quantity || 1}</h1>
+                                                <h1 className="px-3 border py-1">{item.quantity || 0}</h1>
                                                 <button
                                                     onClick={() => handleIncreaseQuantity(item.id)}
                                                     className="bg-blue-500 text-white font-bold py-2 px-2 border border-blue-500"
@@ -81,26 +74,26 @@ const CartComponent = ({
                                                     <FaPlus />
                                                 </button>
                                             </div>
-                                            <p className="text-lg font-semibold ml-4">$ {item.price || 0}</p>
+                                            {item.quantity > 0 && (
+                                                <p className="text-lg font-semibold ml-4">$ {item.price || 1}</p>
+                                            )}
                                         </div>
                                         <div className="mt-4 flex justify-end md:text-right">
-                                            <div className="mt-4 flex justify-end md:text-right">
-                                                <button onClick={() => handleDeleteItem(item.id)} className="text-red-500">
-                                                    <FaTrash />
-                                                </button>
-                                            </div>
+                                            <button onClick={() => handleDeleteItem(item.id)} className="text-red-500">
+                                                <FaTrash />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    <div className=" mr-auto">
-                        <div className="">
-                            <p>Total Checked Items: {totalCheckedItems}</p>
-                            <p>Total Price: $ {totalCheckedPrice}</p>
-                        </div>
+                    <div className="flex justify-end items-center mt-4 ">
+                        <button onClick={handleCheckout} className="font-semibold bg-pink-500 hover:bg-pink-700 text-white py-2 px-4 rounded-lg mt-4 md:mt-0 md:ml-4 ">
+                            Check Out
+                        </button>
                     </div>
+                    {showModal && <CheckoutModal cartItems={cartItems} setShowModal={setShowModal} />}
                 </div>
             </div>
         </div>

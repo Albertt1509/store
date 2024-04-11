@@ -1,4 +1,3 @@
-
 import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/actionLogin';
 
 const initialState = {

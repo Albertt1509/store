@@ -45,7 +45,7 @@ const cartReducer = (state = initialState, action) => {
                     item.id === action.payload ? {
                         ...item,
                         quantity: (item.quantity || 0) + 1,
-                        price: formatPrice(item.price * ((item.quantity || 0) + 1) / (item.quantity || 1)) // Menggunakan formatPrice untuk mengatur format harga
+                        price: formatPrice(item.price * ((item.quantity || 0) + 1) / (item.quantity || 1))
                     } : item
                 ),
             };
@@ -57,7 +57,7 @@ const cartReducer = (state = initialState, action) => {
                     item.id === action.payload ? {
                         ...item,
                         quantity: Math.max((item.quantity || 1) - 1, 1),
-                        price: formatPrice(item.price * (Math.max((item.quantity || 1) - 1, 1) / (item.quantity || 1))) // Menggunakan formatPrice untuk mengatur format harga
+                        price: formatPrice(item.price * (Math.max((item.quantity || 1) - 1, 1) / (item.quantity || 1)))
                     } : item
                 ),
             };

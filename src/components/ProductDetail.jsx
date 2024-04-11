@@ -6,7 +6,8 @@ import { FaHeart } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addToCart } from '../config/actions/actionsCart';
-import Loading from './Loading'
+import { LoadingAnimation } from './jsonAnimation';
+
 const ProductDetail = () => {
     const { productId } = useParams();
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const ProductDetail = () => {
 
     if (loading) {
         return <div>
-            <Loading />
+            <LoadingAnimation />
         </div>;
     }
 

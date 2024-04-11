@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { CgMenuMotion } from 'react-icons/cg'
 import { ToastContainer, toast } from 'react-toastify';
-import Loading from './Loading';
+import { LoadingAnimation } from './jsonAnimation';
 
 const ProductList = () => {
     const products = useSelector((state) => state.products.products);
@@ -46,7 +46,7 @@ const ProductList = () => {
     };
 
     if (loading) {
-        return <div><Loading /></div>;
+        return <div><LoadingAnimation /></div>;
     }
 
     const toggleFavorite = (productId) => {
@@ -84,7 +84,7 @@ const ProductList = () => {
                 </button>
             </div>
             {showFilter && (
-                <div className="md:hidden fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 transition-transform duration-300 transform translate-y-0 bg-white">
+                <div className="md:hidden fixed inset-x-0 transition-transform transision-400 bottom-0 z-50 border-t border-gray-200  bg-white ">
                     <div className="p-3 grid grid-cols-1 shadow-sm mx-auto">
                         <div className="Category grid grid-cols-2 gap-4">
                             <h3 className="font-semibold col-span-2">Filter by Category</h3>
