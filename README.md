@@ -1,4 +1,4 @@
-# Panduan Instalasi yang punya skripsi
+# Panduan Instalasi 
 
 1. **Clone Repositori**
      Gunakan perintah `git clone` untuk mengunduh repositori Mikael_2 dari GitHub:
