@@ -1,7 +1,7 @@
 # Panduan Instalasi 
 
 1. **Clone Repositori**
-     Gunakan perintah `git clone` untuk mengunduh repositori Mikael_2 dari GitHub:
+     Gunakan perintah `git clone` untuk mengunduh repositori dari GitHub:
 
     ```bash
     git clone https://github.com/Albertt1509/store.git
