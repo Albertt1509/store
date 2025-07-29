@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { checkAuth } from './config/actions/actionLogin';
 import './App.css';
 import Login from './components/Login';
-import Home from './components/Home';
+import Home from './view/Home';
 import Product from './components/Product';
 import ProductDetail from './components/ProductDetail';
 import Carts from './components/Carts';
